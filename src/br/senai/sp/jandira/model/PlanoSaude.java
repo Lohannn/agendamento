@@ -14,7 +14,7 @@ public class PlanoSaude {
 	}
 
 	public String getOperadora() {
-		return categoria;
+		return operadora;
 	}
 
 	public void setCategoria(String categoria) {
@@ -30,7 +30,7 @@ public class PlanoSaude {
 	}
 
 	public String getNumero() {
-		return categoria;
+		return numero;
 	}
 
 	public void setValidade(LocalDate validade) {
