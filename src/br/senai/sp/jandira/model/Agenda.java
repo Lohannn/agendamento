@@ -11,20 +11,20 @@ public class Agenda {
 	private Medico medico;
 	private Especialidade especialidade;
 
-	public LocalDate getData() {
+	public LocalDate getDataConsulta() {
 		return dataConsulta;
 	}
 
-	public void setData(LocalDate data) {
-		this.dataConsulta = data;
+	public void setDataConsulta(LocalDate dataConsulta) {
+		this.dataConsulta = dataConsulta;
 	}
 
-	public LocalTime getHorario() {
+	public LocalTime getHorarioConsulta() {
 		return horarioConsulta;
 	}
 
-	public void setHorario(LocalTime horario) {
-		this.horarioConsulta = horario;
+	public void setHorarioConsulta(LocalTime horarioConsulta) {
+		this.horarioConsulta = horarioConsulta;
 	}
 
 	public Paciente getPaciente() {

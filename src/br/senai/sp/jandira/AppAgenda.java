@@ -15,27 +15,40 @@ import br.senai.sp.jandira.model.PlanoSaude;
 public class AppAgenda {
 
 	public static void main(String[] args) {
+		
+//		int nota = 10;
+//		int[] notas = {5, 6, 9};
+//		double[] precos = new double[3];
+//		precos[0] = 5.9;
+//		precos[1] = 7.97;
+//		precos[2] = 52.35;
+//		
+//		String[] nomes = {"ana", "paulo", "pedro", "julio"};
+//		String[] cidades = new String[3];
+//		cidades[0] = "Jandira";
+//		cidades[1] = "Barueri";
+//		cidades[2] = "Cotia";
 
-		Especialidade especialidade1 = new Especialidade();
+		Especialidade especialidade1 = new Especialidade("Cardiologia");
 		especialidade1.setNome("Cardiologia");
 		especialidade1.setDescricao(
 				"Cardiologia é a especialidade médica que realiza o diagnóstico e trata das doenças do coração.");
 
-		Especialidade especialidade2 = new Especialidade();
+		Especialidade especialidade2 = new Especialidade("Otorrinolaringologia");
 		especialidade2.setNome("Otorrinolaringologia");
 		especialidade2
 				.setDescricao("Otorrinolaringologia trata de doenças dos ouvidos, nariz, garganta, laringe e pescoço.");
 
-		Especialidade especialidade3 = new Especialidade();
+		Especialidade especialidade3 = new Especialidade("Gastroenterologia");
 		especialidade3.setNome("Gastroenterologia");
 		especialidade3.setDescricao(
 				"A gastroenterologia é a especialidade médica que se ocupa da prevenção e tratamento das doenças que afetam o aparelho digestivo.");
 
-		Especialidade especialidade4 = new Especialidade();
+		Especialidade especialidade4 = new Especialidade("Fisioterapia");
 		especialidade4.setNome("Fisioterapia");
 		especialidade4.setDescricao("Fisioterapia trata de doenças relacionadas a postura, lesões ou má-formações.");
 
-		Especialidade especialidade5 = new Especialidade();
+		Especialidade especialidade5 = new Especialidade("Clínico Geral");
 		especialidade5.setNome("Clínico Geral");
 		especialidade5.setDescricao("Clínico Geral trata de Checkups.");
 
@@ -146,16 +159,16 @@ public class AppAgenda {
 		// agenda1r para o paciente 1 uma consulta com o o médico 2
 		Agenda agenda1 = new Agenda();
 		agenda1.setPaciente(paciente1);
-		agenda1.setData(LocalDate.of(2023, 9, 27));
-		agenda1.setHorario(LocalTime.of(15, 45));
+		agenda1.setDataConsulta(LocalDate.of(2023, 9, 27));
+		agenda1.setHorarioConsulta(LocalTime.of(15, 45));
 		agenda1.setMedico(medico2);
 		agenda1.setEspecialidade(especialidade4);
 
 		// exibir agenda1 do Paciente 1
 		System.out.println("\n\n\n----------------AGENDAMENTOS------------------");
 		System.out.println("Paciente: " + agenda1.getPaciente().getNome());
-		System.out.println("Data da Consulta: " + agenda1.getData());
-		System.out.println("Hora da Consulta: " + agenda1.getHorario());
+		System.out.println("Data da Consulta: " + agenda1.getDataConsulta());
+		System.out.println("Hora da Consulta: " + agenda1.getHorarioConsulta());
 		System.out.println("Nome do Médico: Dra." + agenda1.getMedico().getNome());
 		System.out.println("Especialidade: " + agenda1.getEspecialidade().getNome());
 		System.out.println("Plano de Saúde: " + agenda1.getPaciente().getPlanoSaude().getOperadora() + " - "

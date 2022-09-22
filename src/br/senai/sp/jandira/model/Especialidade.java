@@ -7,6 +7,20 @@ public class Especialidade {
 	private String nome;
 	private String descricao;
 
+	// Construtores da Classe
+	public Especialidade(String nome) {
+		this.nome = nome;
+	}
+
+	public Especialidade(String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
+	public Especialidade() {
+
+	}
+
 	// Métodos de acesso aos atributos
 	public void setNome(String nome) {
 
@@ -28,8 +42,8 @@ public class Especialidade {
 		if (descricao.length() >= 10) {
 			this.descricao = descricao;
 		} else {
-			JOptionPane.showMessageDialog(null, "A descrição é muito pequena!\nDeve ter ao menos 10 caracteres!", "Descrição Inválida",
-					JOptionPane.WARNING_MESSAGE, null);
+			JOptionPane.showMessageDialog(null, "A descrição é muito pequena!\nDeve ter ao menos 10 caracteres!",
+					"Descrição Inválida", JOptionPane.WARNING_MESSAGE, null);
 		}
 	}
 
