@@ -20,7 +20,7 @@ public class TesteEminem {
 //		e1.setNome("Cardiologia");
 		e1.setDescricao("Cuida do coração");
 
-		Especialidade e2 = new Especialidade("Gastroenterologia");
+		Especialidade e2 = new Especialidade();
 //		e2.setNome("Gastroenterologia");
 		e2.setDescricao("Cuida da barriguinha mole");
 

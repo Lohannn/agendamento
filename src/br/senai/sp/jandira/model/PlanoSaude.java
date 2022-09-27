@@ -3,11 +3,21 @@ package br.senai.sp.jandira.model;
 import java.time.LocalDate;
 
 public class PlanoSaude {
+	
+	public PlanoSaude(String operadora) {
+		this.operadora = operadora;
+		quantidade++;
+	}
+
+	public PlanoSaude() {
+		quantidade++;
+	}
 
 	private String operadora;
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
+	private static int quantidade;
 
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
@@ -40,4 +50,9 @@ public class PlanoSaude {
 	public LocalDate getValidade() {
 		return validade;
 	}
+	
+	public static int getQuantidade() {
+		return quantidade;
+	}
+	
 }

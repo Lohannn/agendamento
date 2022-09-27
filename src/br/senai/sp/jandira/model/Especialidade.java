@@ -18,7 +18,7 @@ public class Especialidade {
 	}
 
 	public Especialidade() {
-
+		
 	}
 
 	// Métodos de acesso aos atributos
