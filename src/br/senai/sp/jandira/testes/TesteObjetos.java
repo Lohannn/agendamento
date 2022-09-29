@@ -23,6 +23,12 @@ public class TesteObjetos {
 
 		Especialidade e3 = new Especialidade();
 		e3.setNome("Qualquer Coisa!");
+                
+                System.out.println("Total: " + e1.getContador());
+                System.out.println(e1.getCodigo() + " - " + e1.getNome());
+                System.out.println(e2.getCodigo() + " - " + e2.getNome());
+                System.out.println(e3.getCodigo() + " - " + e3.getNome());
+                System.out.println(e4.getCodigo() + " - " + e4.getNome());
 
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -72,6 +78,7 @@ public class TesteObjetos {
 		PlanoSaude a4 = new PlanoSaude("Bradesco");
 		PlanoSaude a5 = new PlanoSaude("Amil");
 		PlanoSaude a6 = new PlanoSaude("Notredame");
+		
 		
 		System.out.println("\n\n" + PlanoSaude.getQuantidade());
 		
