@@ -12,19 +12,19 @@ public class Especialidade {
 //     Construtores da Classe
     public Especialidade(String nome) {
         this.nome = nome;
-        this.contador++;
+        Especialidade.contador++;
         this.codigo = contador;
     }
 
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.contador++;
+        Especialidade.contador++;
         this.codigo = getContador();
     }
 
     public Especialidade() {
-        this.contador++;
+        Especialidade.contador++;
         this.codigo = getContador();
     }
 
@@ -33,7 +33,10 @@ public class Especialidade {
     public Integer getCodigo() {
         return codigo;
     }
-    
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
     
     public int getContador() {
         return contador;
