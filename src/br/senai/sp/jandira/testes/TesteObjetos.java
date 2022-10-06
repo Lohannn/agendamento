@@ -13,6 +13,31 @@ public class TesteObjetos {
 
     public static void main(String[] args) {
 
+        int[] a = {6, 9, 87, 35, 96};
+        int[] b = new int [4];
+        b[0] = 55;
+        b[1] = 55;
+        b[2] = 11;
+        b[3] = 99;
+        
+        int[][] c = {
+            {4, 6 ,6},
+            {5,9,7},
+            {1,2,3},
+            {5,5,8}
+        };
+        
+        String[][] quitanda = {
+            {"Banana","Maçã","Uva","Morango"},
+            {"Alface","Couve","Pepino","Salsinha","Pimentão","Brócolis"},
+            {"Abacate","Tomate","Jiló","Abobrinha"},
+        };
+        
+        System.out.println(quitanda[1][4]);
+        System.out.println(c[2][1]);
+
+        System.out.println("***********************************************************************************");
+
         Especialidade e1 = new Especialidade("Cardiologia");
         e1.setDescricao("Cuida do coração");
 
@@ -73,8 +98,8 @@ public class TesteObjetos {
         }
 
         // Utilização do for para iteração
-        for (int c = 0; c < especialidadess.size(); c++) {
-            System.out.println(especialidadess.get(c).getNome());
+        for (int j = 0; j < especialidadess.size(); j++) {
+            System.out.println(especialidadess.get(j).getNome());
         }
 
         // FOR EACH

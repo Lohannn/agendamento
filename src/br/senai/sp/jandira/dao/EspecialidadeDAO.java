@@ -30,6 +30,21 @@ public class EspecialidadeDAO {
         }
     }
 
+    //Criar uma lista inicial de especialidades
+    public static void criarListaDeEspecialidades() {
+        
+        Especialidade e1 = new Especialidade("Cardiologia", "Cardiologia é a especialidade médica que realiza o diagnóstico e trata das doenças do coração.");
+        Especialidade e2 = new Especialidade("Otorrinolaringologia", "Otorrinolaringologia trata de doenças dos ouvidos, nariz, garganta, laringe e pescoço.");
+        Especialidade e3 = new Especialidade("Gastroenterologia", "A gastroenterologia é a especialidade médica que se ocupa da prevenção e tratamento das doenças que afetam o aparelho digestivo.");
+        Especialidade e4 = new Especialidade("Fisioterapia", "Fisioterapia trata de doenças relacionadas a postura, lesões ou má-formações.");
+        
+        especialidades.add(e1);
+        especialidades.add(e2);
+        especialidades.add(e3);
+        especialidades.add(e4);
+        
+    }
+
     public static void atualizar(Especialidade corrigida) {
         for (Especialidade i : especialidades) {
             if (corrigida.getCodigo() == i.getCodigo()) {
