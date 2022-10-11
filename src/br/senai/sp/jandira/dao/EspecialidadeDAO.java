@@ -3,6 +3,7 @@ package br.senai.sp.jandira.dao;
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
@@ -33,15 +34,33 @@ public class EspecialidadeDAO {
     //Criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
         
-        Especialidade e1 = new Especialidade("Cardiologia", "Cardiologia é a especialidade médica que realiza o diagnóstico e trata das doenças do coração.");
-        Especialidade e2 = new Especialidade("Otorrinolaringologia", "Otorrinolaringologia trata de doenças dos ouvidos, nariz, garganta, laringe e pescoço.");
-        Especialidade e3 = new Especialidade("Gastroenterologia", "A gastroenterologia é a especialidade médica que se ocupa da prevenção e tratamento das doenças que afetam o aparelho digestivo.");
-        Especialidade e4 = new Especialidade("Fisioterapia", "Fisioterapia trata de doenças relacionadas a postura, lesões ou má-formações.");
+        Especialidade e1 = new Especialidade("Cardiologia", "Área da medicina que cuida do coração.");
+        Especialidade e2 = new Especialidade("Otorrinolaringologia", "Área da medicina que cuida do ouvido, nariz e pescoço.");
+        Especialidade e3 = new Especialidade("Gastroenterologia", "Área da medicina que cuida do estômago.");
+        Especialidade e4 = new Especialidade("Fisioterapia", "Área da medicina que cuida dos problemas no corpo.");
         
         especialidades.add(e1);
         especialidades.add(e2);
         especialidades.add(e3);
         especialidades.add(e4);
+        
+    }
+    
+    public static DefaultTableModel getEspecialidadesModel(){
+        
+        String[] titulos = {"CÓDIGO", "ESPECIALIDADE", "DESCRIÇÃO"};
+        String[][] dados = new String[especialidades.size()][3];
+        
+        int i = 0;
+        for (Especialidade e : especialidades) {
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getNome();
+            dados[i][2] = e.getDescricao();
+            i++;
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(dados, titulos);
+        return modelo;
         
     }
 

@@ -1,13 +1,13 @@
 package br.senai.sp.jandira;
 
-import br.senai.sp.jandira.gui.AgendaDeConsultas;
+import br.senai.sp.jandira.gui.HomeFrame;
 
 public class AppAgenda {
 
     public static void main(String[] args) {
-        
-        AgendaDeConsultas tela = new AgendaDeConsultas();
+
+        HomeFrame tela = new HomeFrame();
         tela.setVisible(true);
-        
+
     }
 }
