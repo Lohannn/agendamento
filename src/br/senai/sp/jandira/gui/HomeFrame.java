@@ -14,7 +14,7 @@ public class HomeFrame extends javax.swing.JFrame {
     
     public HomeFrame() {
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/senai/sp/jandira/images/299092_calendar_icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/senai/sp/jandira/images/agenda.png")));
         criarListaDeEspecialidades();
         initPanels();
     }
@@ -63,15 +63,15 @@ public class HomeFrame extends javax.swing.JFrame {
         labelAGECON.setForeground(new java.awt.Color(0, 0, 255));
         labelAGECON.setText("AGECON");
         panelHome.add(labelAGECON);
-        labelAGECON.setBounds(20, 10, 210, 60);
+        labelAGECON.setBounds(20, 10, 530, 60);
 
         labelAGECONSub.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelAGECONSub.setForeground(new java.awt.Color(51, 51, 51));
         labelAGECONSub.setText("Agenda de Consultas");
         panelHome.add(labelAGECONSub);
-        labelAGECONSub.setBounds(50, 60, 131, 20);
+        labelAGECONSub.setBounds(50, 60, 660, 20);
 
-        labelAgendaAGECON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/299092_calendar_icon.png"))); // NOI18N
+        labelAgendaAGECON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/agenda.png"))); // NOI18N
         panelHome.add(labelAgendaAGECON);
         labelAgendaAGECON.setBounds(220, 10, 60, 70);
 
@@ -83,26 +83,26 @@ public class HomeFrame extends javax.swing.JFrame {
         labelSite.setForeground(new java.awt.Color(0, 0, 0));
         labelSite.setText("www.agecon.com.br");
         panelHome.add(labelSite);
-        labelSite.setBounds(20, 220, 200, 30);
+        labelSite.setBounds(20, 220, 570, 30);
 
         labelSuporte.setBackground(new java.awt.Color(0, 0, 0));
         labelSuporte.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         labelSuporte.setForeground(new java.awt.Color(0, 0, 0));
         labelSuporte.setText("Suporte Técnico");
         panelHome.add(labelSuporte);
-        labelSuporte.setBounds(20, 150, 200, 30);
+        labelSuporte.setBounds(20, 150, 590, 30);
 
         labelEmail.setBackground(new java.awt.Color(0, 0, 0));
         labelEmail.setForeground(new java.awt.Color(0, 0, 0));
         labelEmail.setText("Email - suporte@gmail.com");
         panelHome.add(labelEmail);
-        labelEmail.setBounds(20, 180, 200, 30);
+        labelEmail.setBounds(20, 180, 540, 30);
 
         labelTelefone.setBackground(new java.awt.Color(0, 0, 0));
         labelTelefone.setForeground(new java.awt.Color(0, 0, 0));
         labelTelefone.setText("Telefone - 11 90909-9090");
         panelHome.add(labelTelefone);
-        labelTelefone.setBounds(20, 200, 200, 30);
+        labelTelefone.setBounds(20, 200, 450, 30);
 
         panelMain.add(panelHome);
         panelHome.setBounds(10, 70, 980, 370);
@@ -110,7 +110,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonSair.setBackground(new java.awt.Color(204, 255, 255));
         buttonSair.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonSair.setForeground(new java.awt.Color(51, 51, 51));
-        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/9161303_log_out_input_access_security_icon.png"))); // NOI18N
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/sair.png"))); // NOI18N
         buttonSair.setText("Sair");
         buttonSair.setToolTipText("Sair");
         panelMain.add(buttonSair);
@@ -119,7 +119,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonHome.setBackground(new java.awt.Color(51, 255, 255));
         buttonHome.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonHome.setForeground(new java.awt.Color(51, 51, 51));
-        buttonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/3440837_building_home_house_internet_web_icon.png"))); // NOI18N
+        buttonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/home.png"))); // NOI18N
         buttonHome.setText("Home");
         buttonHome.setToolTipText("Home");
         buttonHome.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPaciente.setBackground(new java.awt.Color(204, 255, 255));
         buttonPaciente.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonPaciente.setForeground(new java.awt.Color(51, 51, 51));
-        buttonPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/6141458_cold_covid19_sick_sickness_a fever_icon.png"))); // NOI18N
+        buttonPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/paciente.png"))); // NOI18N
         buttonPaciente.setText("Paciente");
         buttonPaciente.setToolTipText("Pacientes");
         buttonPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonMedicos.setBackground(new java.awt.Color(204, 255, 255));
         buttonMedicos.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonMedicos.setForeground(new java.awt.Color(51, 51, 51));
-        buttonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/6014551_asian_coronavirus_doctor_male_icon.png"))); // NOI18N
+        buttonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/medicos.png"))); // NOI18N
         buttonMedicos.setText("Médicos");
         buttonMedicos.setToolTipText("Médicos");
         buttonMedicos.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPlanoSaude.setBackground(new java.awt.Color(204, 255, 255));
         buttonPlanoSaude.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonPlanoSaude.setForeground(new java.awt.Color(51, 51, 51));
-        buttonPlanoSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/2142681_badge_data_id_identification_profile_icon.png"))); // NOI18N
+        buttonPlanoSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/planodesaude.png"))); // NOI18N
         buttonPlanoSaude.setText("Plano de Saúde");
         buttonPlanoSaude.setToolTipText("Planos de saúde");
         buttonPlanoSaude.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonAgenda1.setBackground(new java.awt.Color(204, 255, 255));
         buttonAgenda1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         buttonAgenda1.setForeground(new java.awt.Color(51, 51, 51));
-        buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/299092_calendar_icon (1).png"))); // NOI18N
+        buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/agenda(1).png"))); // NOI18N
         buttonAgenda1.setText("Agenda");
         buttonAgenda1.setToolTipText("Agendamentos");
         buttonAgenda1.addActionListener(new java.awt.event.ActionListener() {
@@ -210,9 +210,9 @@ public class HomeFrame extends javax.swing.JFrame {
         labelTitulo.setForeground(new java.awt.Color(0, 0, 255));
         labelTitulo.setText("Agenda de Consultas");
         panelHeader.add(labelTitulo);
-        labelTitulo.setBounds(90, 20, 240, 50);
+        labelTitulo.setBounds(90, 20, 630, 50);
 
-        labelAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/299092_calendar_icon.png"))); // NOI18N
+        labelAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/agenda.png"))); // NOI18N
         panelHeader.add(labelAgenda);
         labelAgenda.setBounds(20, 10, 60, 70);
 

@@ -5,6 +5,8 @@
 package br.senai.sp.jandira.gui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,6 +58,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableEspecialidadescadastradas.setColumnSelectionAllowed(false);
         tableEspecialidadescadastradas.getTableHeader().setReorderingAllowed(false);
         scrollTable.setViewportView(tableEspecialidadescadastradas);
 
@@ -63,7 +66,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         scrollTable.setBounds(20, 30, 940, 280);
 
         buttonDeletar.setBackground(new java.awt.Color(255, 255, 255));
-        buttonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/1312512_circle_delete_style_trash_remove_icon.png"))); // NOI18N
+        buttonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/deletar.png"))); // NOI18N
         buttonDeletar.setToolTipText("Deletar Especialidades");
         buttonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +77,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         buttonDeletar.setBounds(790, 320, 40, 40);
 
         buttonEditar.setBackground(new java.awt.Color(255, 255, 255));
-        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/1311613_circle_edit_line_pen_design_icon.png"))); // NOI18N
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/editar.png"))); // NOI18N
         buttonEditar.setToolTipText("Editar Especialidades");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +88,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         buttonEditar.setBounds(850, 320, 40, 40);
 
         buttonAdicionar.setBackground(new java.awt.Color(255, 255, 255));
-        buttonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/6586117_add_create_new_plus_icon.png"))); // NOI18N
+        buttonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/images/adicionar.png"))); // NOI18N
         buttonAdicionar.setToolTipText("Adicionar Especialidades");
         buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,15 +100,45 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarActionPerformed
-        // TODO add your handling code here:
+        int linha = tableEspecialidadescadastradas.getSelectedRow();
+        
+        if (linha != -1){
+            excluirEspecialidadeSelecionada();
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Nenhuma especialidade selecionada!", 
+                    "Escluindo Especialidade", 
+                    JOptionPane.WARNING_MESSAGE, null);
+        }
     }//GEN-LAST:event_buttonDeletarActionPerformed
 
+    private void excluirEspecialidadeSelecionada () {
+        int linha = tableEspecialidadescadastradas.getSelectedRow();
+        
+        String codigoStr = tableEspecialidadescadastradas.getValueAt(linha, 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        
+        int resposta = JOptionPane.showConfirmDialog(this, 
+                "Essa especialidade será excluida.\nVocê tem certeza?", 
+                "Excluindo Especialidade", JOptionPane.NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, null);
+        
+        if (resposta == 0){
+        EspecialidadeDAO.excluirEspecialidade(codigo);
+        preencherTabela();
+        }
+    }
+    
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-        // TODO add your handling code here:
+        
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        especialidadeDialog.setVisible(true);
+        preencherTabela();
+        
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
 
@@ -120,6 +153,20 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
     private void preencherTabela() {
         tableEspecialidadescadastradas.setModel(EspecialidadeDAO.getEspecialidadesModel());
+        ajustarTabela();
+    }
+    
+    private void ajustarTabela(){
+        
+        tableEspecialidadescadastradas.getTableHeader().setReorderingAllowed(false);
+        
+        tableEspecialidadescadastradas.setDefaultEditor(Object.class, null);
+        
+        tableEspecialidadescadastradas.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tableEspecialidadescadastradas.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tableEspecialidadescadastradas.getColumnModel().getColumn(1).setPreferredWidth(350);
+        tableEspecialidadescadastradas.getColumnModel().getColumn(2).setPreferredWidth(527);
+        
     }
 
 }
