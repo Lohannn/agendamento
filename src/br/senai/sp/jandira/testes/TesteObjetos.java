@@ -68,7 +68,6 @@ public class TesteObjetos {
         System.out.println(EspecialidadeDAO.getEspecialidade(e4.getCodigo()).getNome());
 
         Especialidade correta = new Especialidade("Dermatologia", "Parte da medicina que estuda as doenças da pele.");
-        correta.setCodigo(e4.getCodigo());
         EspecialidadeDAO.atualizar(correta);
 
         System.out.println(EspecialidadeDAO.getEspecialidade(e4.getCodigo()).getNome());

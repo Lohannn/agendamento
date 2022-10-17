@@ -68,6 +68,7 @@ public class EspecialidadeDAO {
         for (Especialidade i : especialidades) {
             if (corrigida.getCodigo() == i.getCodigo()) {
                 especialidades.set(especialidades.indexOf(i), corrigida);
+                break;
             }
         }
     }
