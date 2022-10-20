@@ -6,14 +6,11 @@ package br.senai.sp.jandira.gui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author 22282201
- */
 public class EspecialidadesPanel extends javax.swing.JPanel {
 
     private int linha;
@@ -31,7 +28,6 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         scrollTable = new javax.swing.JScrollPane();
         tableEspecialidadescadastradas = new javax.swing.JTable();
         buttonDeletar = new javax.swing.JButton();
@@ -57,7 +53,6 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableEspecialidadescadastradas.setColumnSelectionAllowed(false);
         tableEspecialidadescadastradas.getTableHeader().setReorderingAllowed(false);
         scrollTable.setViewportView(tableEspecialidadescadastradas);
 
@@ -131,8 +126,8 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
                     "Nenhuma especialidade selecionada!", 
                     "Editando Especialidade", 
                     JOptionPane.WARNING_MESSAGE, null);
-        }
-       
+        }       
+                
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void editarEspecialidadeSelecionada(){
@@ -142,14 +137,14 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         EspecialidadeDialog especialidadeDialog = 
                 new EspecialidadeDialog(null,
                         true,
-                        EspecialidadeDAO.getEspecialidade(getCodigo()));
+                        especialidade, OperacaoEnum.EDITAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
     }
     
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
         
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.ADICIONAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
         
@@ -165,7 +160,6 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonDeletar;
     private javax.swing.JButton buttonEditar;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scrollTable;
     private javax.swing.JTable tableEspecialidadescadastradas;
     // End of variables declaration//GEN-END:variables

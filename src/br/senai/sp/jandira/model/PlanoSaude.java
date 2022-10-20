@@ -3,56 +3,70 @@ package br.senai.sp.jandira.model;
 import java.time.LocalDate;
 
 public class PlanoSaude {
-	
-	public PlanoSaude(String operadora) {
-		this.operadora = operadora;
-		quantidade++;
-	}
 
-	public PlanoSaude() {
-		quantidade++;
-	}
+    public PlanoSaude() {
+        this.operadora = operadora;
+        gerarCodigo();
+    }
 
-	private String operadora;
-	private String categoria;
-	private String numero;
-	private LocalDate validade;
-	private static int quantidade;
+    public PlanoSaude(String operadora, String categoria, String numero, LocalDate validade) {
+        this.operadora = operadora;
+        this.categoria = categoria;
+        this.numero = operadora;
+        this.validade = validade;
+        gerarCodigo();
+    }
 
-	public void setOperadora(String operadora) {
-		this.operadora = operadora;
-	}
+    private String operadora;
+    private String categoria;
+    private String numero;
+    private LocalDate validade;
+    private Integer codigo;
+    private static int contador = 200;
 
-	public String getOperadora() {
-		return operadora;
-	}
+    public void setOperadora(String operadora) {
+        this.operadora = operadora;
+    }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+    public String getOperadora() {
+        return operadora;
+    }
 
-	public String getCategoria() {
-		return categoria;
-	}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+    public String getCategoria() {
+        return categoria;
+    }
 
-	public String getNumero() {
-		return numero;
-	}
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
-	}
+    public String getNumero() {
+        return numero;
+    }
 
-	public LocalDate getValidade() {
-		return validade;
-	}
-	
-	public static int getQuantidade() {
-		return quantidade;
-	}
-	
+    public void setValidade(LocalDate validade) {
+        this.validade = validade;
+    }
+
+    public LocalDate getValidade() {
+        return validade;
+    }
+
+    public void gerarCodigo() {
+        PlanoSaude.contador++;
+        this.codigo = getContador();
+    }
+
+    public static int getContador() {
+        return contador;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
 }
