@@ -1,4 +1,3 @@
-
 package br.senai.sp.jandira.gui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
@@ -20,7 +19,7 @@ public class PlanoSaudePanel extends javax.swing.JPanel {
         PlanoSaudeDAO.criarListaDePlanos();
         preencherTabelaPlanos();
     }
-    
+
     private int getLinha() {
         return tablePlanosCadastrados.getSelectedRow();
     }
@@ -116,64 +115,63 @@ public class PlanoSaudePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private Integer getCodigo(){
+    private Integer getCodigo() {
         String codigoStr = tablePlanosCadastrados.getValueAt(getLinha(), 0).toString();
         Integer codigo = Integer.valueOf(codigoStr);
         return codigo;
-    } 
-    
+    }
+
     private void buttonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarActionPerformed
-        if (getLinha() != -1){
+        if (getLinha() != -1) {
             excluirPlanoSelecionado();
         } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Nenhum plano selecionado!", 
-                    "Excluindo Plano de Saúde", 
+            JOptionPane.showMessageDialog(this,
+                    "Nenhum plano selecionado!",
+                    "Excluindo Plano de Saúde",
                     JOptionPane.WARNING_MESSAGE, null);
         }
     }//GEN-LAST:event_buttonDeletarActionPerformed
 
-    private void excluirPlanoSelecionado () {
-        
-        int resposta = JOptionPane.showConfirmDialog(this, 
-                "Esse Plano de Saúde será excluido.\nVocê tem certeza?", 
-                "Excluindo Plano de Saúde", JOptionPane.NO_OPTION, 
+    private void excluirPlanoSelecionado() {
+
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Esse Plano de Saúde será excluido.\nVocê tem certeza?",
+                "Excluindo Plano de Saúde", JOptionPane.NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null);
-        
-        
-        if (resposta == 0){
+
+        if (resposta == 0) {
             PlanoSaudeDAO.excluirPlano(getCodigo());
             preencherTabelaPlanos();
         }
     }
-    
+
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-        if(getLinha() != -1){
+        if (getLinha() != -1) {
             editarplanoSelecionado();
         } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Nenhum plano selecionado!", 
-                    "Editando Plano de Saúde", 
+            JOptionPane.showMessageDialog(this,
+                    "Nenhum plano selecionado!",
+                    "Editando Plano de Saúde",
                     JOptionPane.WARNING_MESSAGE, null);
-        }       
+        }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void editarplanoSelecionado(){
+    private void editarplanoSelecionado() {
+
+        PlanoSaude planoDeSaude = PlanoSaudeDAO.getPlanoDeSaude(getCodigo());
         
-        PlanoSaude planoSaude = PlanoSaudeDAO.getPlanosDeSaude(getCodigo());
+        System.out.println(planoDeSaude.getCodigo());
         
-        PlanoSaudeDialog planoDialog = 
-                new PlanoSaudeDialog(null,
-                        true,
-                        planoSaude, OperacaoEnum.EDITAR);
-        planoDialog.setVisible(true);
+        PlanoSaudeDialog planoSaude = new PlanoSaudeDialog(null, true,
+                planoDeSaude, OperacaoEnum.EDITAR);
+        planoSaude.setVisible(true);
         preencherTabelaPlanos();
     }
-    
+
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
         PlanoSaudeDialog planoDialog = new PlanoSaudeDialog(null, true, OperacaoEnum.ADICIONAR);
         planoDialog.setVisible(true);
-        preencherTabelaPlanos();        
+        preencherTabelaPlanos();
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
 
@@ -185,24 +183,24 @@ public class PlanoSaudePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane scrollTable;
     private javax.swing.JTable tablePlanosCadastrados;
     // End of variables declaration//GEN-END:variables
-    
+
     private void preencherTabelaPlanos() {
         tablePlanosCadastrados.setModel(PlanoSaudeDAO.getPlanoSaudeModel());
         ajustarTabelaPlanos();
     }
-    
-    private void ajustarTabelaPlanos(){
-        
+
+    private void ajustarTabelaPlanos() {
+
         tablePlanosCadastrados.getTableHeader().setReorderingAllowed(false);
-        
+
         tablePlanosCadastrados.setDefaultEditor(Object.class, null);
-        
+
         tablePlanosCadastrados.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tablePlanosCadastrados.getColumnModel().getColumn(0).setPreferredWidth(60);
         tablePlanosCadastrados.getColumnModel().getColumn(1).setPreferredWidth(140);
         tablePlanosCadastrados.getColumnModel().getColumn(2).setPreferredWidth(150);
         tablePlanosCadastrados.getColumnModel().getColumn(3).setPreferredWidth(127);
         tablePlanosCadastrados.getColumnModel().getColumn(4).setPreferredWidth(97);
-        
+
     }
 }

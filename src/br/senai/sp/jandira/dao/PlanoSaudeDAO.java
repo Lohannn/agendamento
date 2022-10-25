@@ -13,9 +13,9 @@ public class PlanoSaudeDAO {
         return planosDeSaude;
     }
 
-    public static PlanoSaude getPlanosDeSaude(Integer codigo) {
+    public static PlanoSaude getPlanoDeSaude(Integer codigo) {
         for (PlanoSaude e : planosDeSaude) {
-            if (codigo == e.getCodigo()) {
+            if (codigo.equals(e.getCodigo())) {
                 return e;
             }
         }
@@ -53,7 +53,7 @@ public class PlanoSaudeDAO {
             dados[i][1] = e.getOperadora();
             dados[i][2] = e.getCategoria();
             dados[i][3] = e.getNumero();
-            dados[i][4] = e.getCodigo().toString();
+            dados[i][4] = e.getDataFormatada();
             i++;
         }
         

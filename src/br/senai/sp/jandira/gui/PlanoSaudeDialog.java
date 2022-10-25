@@ -6,7 +6,9 @@ import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoSaude;
 import java.awt.Toolkit;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 public class PlanoSaudeDialog extends javax.swing.JDialog {
 
@@ -22,7 +24,8 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         preencherTitulo();
     }
 
-    public PlanoSaudeDialog(java.awt.Frame parent,
+    public PlanoSaudeDialog(
+            java.awt.Frame parent,
             boolean modal,
             PlanoSaude e,
             OperacaoEnum operacao) {
@@ -36,28 +39,26 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         preencherTitulo();
 
     }
-    
-    private void preencherTitulo(){
+
+    private void preencherTitulo() {
         setTitle(operacao + " Planos de Saúde");
         labelTitle.setText(operacao + " - PLANOS DE SAÚDE");
-        
-        if (operacao == OperacaoEnum.EDITAR){
+
+        if (operacao == OperacaoEnum.EDITAR) {
             setIconImage(Toolkit.getDefaultToolkit().
                     getImage(getClass().
-                    getResource("/br/senai/sp/jandira/images/editar.png")));
-            labelTitle.setIcon(new javax.swing.
-                    ImageIcon(getClass().
+                            getResource("/br/senai/sp/jandira/images/editar.png")));
+            labelTitle.setIcon(new javax.swing.ImageIcon(getClass().
                     getResource("/br/senai/sp/jandira/images/editar.png")));
         } else {
             setIconImage(Toolkit.
                     getDefaultToolkit().
                     getImage(getClass().
+                            getResource("/br/senai/sp/jandira/images/adicionar."
+                                    + "png")));
+            labelTitle.setIcon(new javax.swing.ImageIcon(getClass().
                     getResource("/br/senai/sp/jandira/images/adicionar."
-                    + "png")));
-            labelTitle.setIcon(new javax.swing.
-                    ImageIcon(getClass().
-                    getResource("/br/senai/sp/jandira/images/adicionar."
-                    + "png")));
+                            + "png")));
         }
     }
 
@@ -78,9 +79,10 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         buttonCancel = new javax.swing.JButton();
         buttonSalvar = new javax.swing.JButton();
         labelNumero = new javax.swing.JLabel();
-        textFieldNumero = new javax.swing.JTextField();
         labelValidade = new javax.swing.JLabel();
-        textFieldValidade = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        fTextFieldNumero = new javax.swing.JFormattedTextField();
+        fTextFieldValidade = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -169,20 +171,46 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         panelAdicionarEspecialidade.add(labelNumero);
         labelNumero.setBounds(40, 180, 530, 16);
 
-        textFieldNumero.setBackground(new java.awt.Color(255, 255, 255));
-        textFieldNumero.setForeground(new java.awt.Color(0, 0, 0));
-        panelAdicionarEspecialidade.add(textFieldNumero);
-        textFieldNumero.setBounds(40, 200, 530, 22);
-
         labelValidade.setForeground(new java.awt.Color(0, 0, 0));
         labelValidade.setText("Validade");
         panelAdicionarEspecialidade.add(labelValidade);
         labelValidade.setBounds(40, 230, 530, 16);
 
-        textFieldValidade.setBackground(new java.awt.Color(255, 255, 255));
-        textFieldValidade.setForeground(new java.awt.Color(0, 0, 0));
-        panelAdicionarEspecialidade.add(textFieldValidade);
-        textFieldValidade.setBounds(40, 250, 530, 22);
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Ex: 10/05/2007");
+        panelAdicionarEspecialidade.add(jLabel1);
+        jLabel1.setBounds(100, 230, 76, 16);
+
+        fTextFieldNumero.setBackground(new java.awt.Color(255, 255, 255));
+        fTextFieldNumero.setColumns(12);
+        try {
+            fTextFieldNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fTextFieldNumeroActionPerformed(evt);
+            }
+        });
+        panelAdicionarEspecialidade.add(fTextFieldNumero);
+        fTextFieldNumero.setBounds(40, 200, 530, 22);
+
+        fTextFieldValidade.setBackground(new java.awt.Color(255, 255, 255));
+        fTextFieldValidade.setColumns(8);
+        try {
+            fTextFieldValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fTextFieldValidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fTextFieldValidadeActionPerformed(evt);
+            }
+        });
+        panelAdicionarEspecialidade.add(fTextFieldValidade);
+        fTextFieldValidade.setBounds(40, 250, 530, 22);
 
         panelMain.add(panelAdicionarEspecialidade);
         panelAdicionarEspecialidade.setBounds(10, 10, 630, 360);
@@ -194,16 +222,16 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void preencherFormulario(){
-        
+    private void preencherFormulario() {
+
         textFieldCodigo.setText(planoSaude.getCodigo().toString());
         textFieldOperadora.setText(planoSaude.getOperadora());
         textFieldCategoria.setText(planoSaude.getCategoria());
-        textFieldNumero.setText(planoSaude.getCategoria());
-        textFieldValidade.setText(planoSaude.getCategoria());
-        
+        fTextFieldNumero.setText(planoSaude.getNumero());
+        fTextFieldValidade.setText(planoSaude.getDataFormatada());
+
     }
-    
+
     private void textFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCodigoActionPerformed
 
     }//GEN-LAST:event_textFieldCodigoActionPerformed
@@ -213,39 +241,49 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        if(operacao == OperacaoEnum.ADICIONAR){
+        if (operacao == OperacaoEnum.ADICIONAR) {
             adicionar();
         } else {
             editar();
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
-    private void adicionar(){
+    private void fTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTextFieldNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fTextFieldNumeroActionPerformed
+
+    private void fTextFieldValidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTextFieldValidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fTextFieldValidadeActionPerformed
+
+    private void adicionar() {
         //Criar objeto especialidade
         PlanoSaude novoPlano = new PlanoSaude();
-        novoPlano.setOperadora(textFieldOperadora.getText());
-        novoPlano.setCategoria(textFieldCategoria.getText());
-        novoPlano.setNumero(textFieldNumero.getText());
-        novoPlano.setNumero(textFieldValidade.getText());
 
-        //Gravar o objeto, através do DAO
-        PlanoSaudeDAO.gravar(novoPlano);
+            novoPlano.setOperadora(textFieldOperadora.getText());
+            novoPlano.setCategoria(textFieldCategoria.getText());
+            novoPlano.setNumero(fTextFieldNumero.getText());
+            novoPlano.setDataFormatada(fTextFieldValidade.getText());
 
-        JOptionPane.showMessageDialog(this,
-                "Plano Gravado com Sucesso!",
-                "Plano de Saúde - Adicionar",
-                JOptionPane.INFORMATION_MESSAGE, null);
-        dispose();
+            //Gravar o objeto, através do DAO
+            PlanoSaudeDAO.gravar(novoPlano);
+
+            JOptionPane.showMessageDialog(this,
+                    "Plano Gravado com Sucesso!",
+                    "Plano de Saúde - Adicionar",
+                    JOptionPane.INFORMATION_MESSAGE, null);
+            dispose();
+
     }
-    
-    private void editar(){
+
+    private void editar() {
         planoSaude.setOperadora(textFieldOperadora.getText());
         planoSaude.setCategoria(textFieldCategoria.getText());
-        planoSaude.setNumero(textFieldNumero.getText());
-        planoSaude.setNumero(textFieldValidade.getText());
-        
+        planoSaude.setNumero(fTextFieldNumero.getText());
+        planoSaude.setDataFormatada(fTextFieldValidade.getText());
+
         PlanoSaudeDAO.atualizar(planoSaude);
-        
+
         JOptionPane.showMessageDialog(this,
                 "Plano Editade com Sucesso!",
                 "Plano de Saúde - Editar",
@@ -256,6 +294,9 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonSalvar;
+    private javax.swing.JFormattedTextField fTextFieldNumero;
+    private javax.swing.JFormattedTextField fTextFieldValidade;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelCategoria;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelNumero;
@@ -267,8 +308,6 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
     private javax.swing.JPanel panelMain;
     private javax.swing.JTextField textFieldCategoria;
     private javax.swing.JTextField textFieldCodigo;
-    private javax.swing.JTextField textFieldNumero;
     private javax.swing.JTextField textFieldOperadora;
-    private javax.swing.JTextField textFieldValidade;
     // End of variables declaration//GEN-END:variables
 }

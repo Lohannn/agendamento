@@ -2,7 +2,6 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
