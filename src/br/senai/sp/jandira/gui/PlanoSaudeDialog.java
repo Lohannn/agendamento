@@ -80,7 +80,6 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         buttonSalvar = new javax.swing.JButton();
         labelNumero = new javax.swing.JLabel();
         labelValidade = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         fTextFieldNumero = new javax.swing.JFormattedTextField();
         fTextFieldValidade = new javax.swing.JFormattedTextField();
 
@@ -176,12 +175,6 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         panelAdicionarEspecialidade.add(labelValidade);
         labelValidade.setBounds(40, 230, 530, 16);
 
-        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Ex: 10/05/2007");
-        panelAdicionarEspecialidade.add(jLabel1);
-        jLabel1.setBounds(100, 230, 76, 16);
-
         fTextFieldNumero.setBackground(new java.awt.Color(255, 255, 255));
         fTextFieldNumero.setColumns(12);
         try {
@@ -241,11 +234,19 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        if (operacao == OperacaoEnum.ADICIONAR) {
-            adicionar();
+
+        CharSequence branco = " ";
+   
+        if (textFieldCategoria.getText().isBlank() == true || textFieldOperadora.getText().isBlank() == true || fTextFieldNumero.getText().contains(branco) == true || fTextFieldValidade.getText().contains(branco) == true) {
+            JOptionPane.showMessageDialog(null, "Há algum campo vazio!\nPreencha todos!", operacao + " - Planos de Saúde", JOptionPane.WARNING_MESSAGE, null);
         } else {
-            editar();
+            if (operacao == OperacaoEnum.ADICIONAR) {
+                adicionar();
+            } else {
+                editar();
+            }
         }
+
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void fTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTextFieldNumeroActionPerformed
@@ -260,19 +261,19 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         //Criar objeto especialidade
         PlanoSaude novoPlano = new PlanoSaude();
 
-            novoPlano.setOperadora(textFieldOperadora.getText());
-            novoPlano.setCategoria(textFieldCategoria.getText());
-            novoPlano.setNumero(fTextFieldNumero.getText());
-            novoPlano.setDataFormatada(fTextFieldValidade.getText());
+        novoPlano.setOperadora(textFieldOperadora.getText());
+        novoPlano.setCategoria(textFieldCategoria.getText());
+        novoPlano.setNumero(fTextFieldNumero.getText());
+        novoPlano.setDataFormatada(fTextFieldValidade.getText());
 
-            //Gravar o objeto, através do DAO
-            PlanoSaudeDAO.gravar(novoPlano);
+        //Gravar o objeto, através do DAO
+        PlanoSaudeDAO.gravar(novoPlano);
 
-            JOptionPane.showMessageDialog(this,
-                    "Plano Gravado com Sucesso!",
-                    "Plano de Saúde - Adicionar",
-                    JOptionPane.INFORMATION_MESSAGE, null);
-            dispose();
+        JOptionPane.showMessageDialog(this,
+                "Plano Gravado com Sucesso!",
+                "Plano de Saúde - Adicionar",
+                JOptionPane.INFORMATION_MESSAGE, null);
+        dispose();
 
     }
 
@@ -285,7 +286,7 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         PlanoSaudeDAO.atualizar(planoSaude);
 
         JOptionPane.showMessageDialog(this,
-                "Plano Editade com Sucesso!",
+                "Plano Editado com Sucesso!",
                 "Plano de Saúde - Editar",
                 JOptionPane.INFORMATION_MESSAGE, null);
         dispose();
@@ -296,7 +297,6 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JFormattedTextField fTextFieldNumero;
     private javax.swing.JFormattedTextField fTextFieldValidade;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelCategoria;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelNumero;
