@@ -20,6 +20,13 @@ public class Especialidade {
         this.descricao = descricao;
         gerarCodigo();
     }
+    
+    public Especialidade(String nome, String descricao, Integer codigo){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.contador = codigo;
+    }
 
     public Especialidade() {
         gerarCodigo();
@@ -42,13 +49,7 @@ public class Especialidade {
     
     public void setNome(String nome) {
 
-        if (nome.length() >= 3) {
             this.nome = nome;
-        } else {
-            JOptionPane.showMessageDialog(null,
-                    "O nome da especialidade (''" + nome + "'') deve ter ao menos 3 letras!", "Nome Inválido",
-                    JOptionPane.WARNING_MESSAGE, null);
-        }
 
     }
 
@@ -57,16 +58,16 @@ public class Especialidade {
     }
 
     public void setDescricao(String descricao) {
-        if (descricao.length() >= 10) {
+
             this.descricao = descricao;
-        } else {
-            JOptionPane.showMessageDialog(null, "A descrição é muito pequena!\nDeve ter ao menos 10 caracteres!",
-                    "Descrição Inválida", JOptionPane.WARNING_MESSAGE, null);
-        }
     }
 
     public String getDescricao() {
         return descricao;
+    }
+    
+    public String getSerializacao(){
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 
 }

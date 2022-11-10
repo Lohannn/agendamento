@@ -1,10 +1,21 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
+    
+    private final static String URL = "C:\\Users\\22282201\\Java\\SistemaDeAgendamento\\Especialidades.txt";
+    private final static Path PATH = Paths.get(URL);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -33,15 +44,31 @@ public class EspecialidadeDAO {
     //Criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
         
-        Especialidade e1 = new Especialidade("Cardiologia", "Área da medicina que cuida do coração.");
-        Especialidade e2 = new Especialidade("Otorrinolaringologia", "Área da medicina que cuida do ouvido, nariz e pescoço.");
-        Especialidade e3 = new Especialidade("Gastroenterologia", "Área da medicina que cuida do estômago.");
-        Especialidade e4 = new Especialidade("Fisioterapia", "Área da medicina que cuida dos problemas no corpo.");
-        
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha = leitor.readLine();
+            
+            while(linha != null){
+                
+                //Transformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(vetor[1], vetor[2], 
+                        Integer.valueOf(vetor[0]));
+                
+                //Guardar a especialidade em uma lista
+                especialidades.add(e);
+                
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, 
+                   "Ocorreu um erro ao ler o arquivo");
+        }
         
     }
     
@@ -66,7 +93,8 @@ public class EspecialidadeDAO {
     public static void atualizar(Especialidade corrigida) {
         for (Especialidade i : especialidades) {
             if (corrigida.getCodigo() == i.getCodigo()) {
-                especialidades.set(especialidades.indexOf(i), corrigida);
+                especialidades.set(especialidades.indexOf(i),
+                        corrigida);
                 break;
             }
         }
@@ -74,6 +102,21 @@ public class EspecialidadeDAO {
 
     public static void gravar(Especialidade e) {
         especialidades.add(e);
+        
+        //GRAVAR ARQUIVO
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH, 
+                    StandardOpenOption.APPEND, 
+                    StandardOpenOption.WRITE);
+            
+            escritor.write(e.getSerializacao());
+            escritor.newLine();
+            escritor.close();
+            
+            
+        } catch (IOException err) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+        }
     }
 
 }

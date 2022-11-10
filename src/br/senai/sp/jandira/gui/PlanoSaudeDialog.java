@@ -1,14 +1,10 @@
 package br.senai.sp.jandira.gui;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.PlanoSaudeDAO;
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoSaude;
 import java.awt.Toolkit;
-import java.text.ParseException;
 import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
 
 public class PlanoSaudeDialog extends javax.swing.JDialog {
 
@@ -188,7 +184,7 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
             }
         });
         panelAdicionarEspecialidade.add(fTextFieldNumero);
-        fTextFieldNumero.setBounds(40, 200, 530, 22);
+        fTextFieldNumero.setBounds(40, 200, 110, 22);
 
         fTextFieldValidade.setBackground(new java.awt.Color(255, 255, 255));
         fTextFieldValidade.setColumns(8);
@@ -203,7 +199,7 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
             }
         });
         panelAdicionarEspecialidade.add(fTextFieldValidade);
-        fTextFieldValidade.setBounds(40, 250, 530, 22);
+        fTextFieldValidade.setBounds(40, 250, 110, 22);
 
         panelMain.add(panelAdicionarEspecialidade);
         panelAdicionarEspecialidade.setBounds(10, 10, 630, 360);

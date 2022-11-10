@@ -8,6 +8,17 @@ import java.time.format.DateTimeFormatter;
     public PlanoSaude() {
         gerarCodigo();
     }
+    
+    public PlanoSaude(Integer codigo, String operadora, String categoria, String numero, String validade) {
+        
+        this.codigo = codigo;
+        this.operadora = operadora;
+        this.categoria = categoria;
+        this.numero = numero;
+        this.dataFormatada = validade;
+        this.contador = codigo;
+        
+    }
 
     public PlanoSaude(String operadora, String categoria, String numero, LocalDate validade) {
         
@@ -18,6 +29,7 @@ import java.time.format.DateTimeFormatter;
         this.categoria = categoria;
         this.numero = numero;
         this.validade = validade;
+        
         gerarCodigo();
     }
 
@@ -33,6 +45,10 @@ import java.time.format.DateTimeFormatter;
     private String dataFormatada;
     private Integer codigo;
     private static int contador = 200;
+    
+    public String toString() {
+        return this.categoria;
+    }
 
     public void setOperadora(String operadora) {
         this.operadora = operadora;
@@ -77,6 +93,10 @@ import java.time.format.DateTimeFormatter;
 
     public Integer getCodigo() {
         return codigo;
+    }
+    
+    public String getSerializacao(){
+        return this.codigo + ";" + this.operadora + ";" + this.categoria + ";" + this.numero + ";" + this.dataFormatada;
     }
 
 }
