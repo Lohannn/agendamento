@@ -1,51 +1,127 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 public class Medico {
 
-	private String nome;
-	private Especialidade[] especialidades;
-	private String telefone;
-	private String email;
-	private String crm;
+    public Medico() {
+        gerarCodigo();
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Medico(Integer codigo, String crm, String nome, String telefone) {
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+        this.codigo = codigo;
+        this.crm = crm;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.contador = codigo;
 
-	public Especialidade[] getEspecialidade() {
-		return especialidades;
-	}
+    }
 
-	public void setEspecialidade(Especialidade[] especialidades) {
-		this.especialidades = especialidades;
-	}
+    public Medico(String crm, String nome, String telefone, String email, LocalDate dataNascimento, Especialidade[] especialidades) {
 
-	public String getTelefone() {
-		return telefone;
-	}
+        formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataFormatada = dataNascimento.format(formatador);
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
+        this.codigo = codigo;
+        this.crm = crm;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
+        this.especialidades = especialidades;
+        this.contador = codigo;
 
-	public String getEmail() {
-		return email;
-	}
+        gerarCodigo();
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
 
-	public String getCrm() {
-		return crm;
-	}
+    private Integer codigo;
+    private String crm;
+    private String nome;
+    private String telefone;
+    private String email;
+    private LocalDate dataNascimento;
+    private DateTimeFormatter formatador;
+    private String dataFormatada;
+    private Especialidade[] especialidades;
+    private static int contador = 100;
 
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
+    public void gerarCodigo() {
+        Medico.contador++;
+        this.codigo = getContador();
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Especialidade[] getEspecialidade() {
+        return especialidades;
+    }
+
+    public void setEspecialidade(Especialidade[] especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public String getSerializacao() {
+
+        StringBuffer separarCodigo = new StringBuffer();
+
+        for (Especialidade e : this.especialidades) {
+            separarCodigo.append(e.getCodigo());
+            separarCodigo.append(";");
+        }
+        String especialidadesSeparadas = separarCodigo.toString();
+
+        return this.codigo + ";"
+                + this.crm + ";"
+                + this.nome + ";"
+                + this.telefone + ";"
+                + this.email + ";"
+                + this.dataFormatada + ";"
+                + especialidadesSeparadas;
+    }
 
 }

@@ -7,7 +7,6 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private EspecialidadesPanel panelEspecialidades;
     private PlanoSaudePanel panelPlanoSaude;
-    private PacientePanel panelPaciente;
     
     private final int DIMENSION_X = 10;
     private final int DIMENSION_Y = 70;
@@ -241,7 +240,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanoSaude.setVisible(true);
-        panelPaciente.setVisible(false);
     }//GEN-LAST:event_buttonPlanoSaudeActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
@@ -255,7 +253,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(true);
         panelPlanoSaude.setVisible(false);
-        panelPaciente.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
@@ -269,7 +266,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(true);
         panelEspecialidades.setVisible(false);
         panelPlanoSaude.setVisible(false);
-        panelPaciente.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonAgenda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgenda1ActionPerformed
@@ -283,7 +279,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanoSaude.setVisible(false);
-        panelPaciente.setVisible(false);
     }//GEN-LAST:event_buttonAgenda1ActionPerformed
 
     private void buttonPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacienteActionPerformed
@@ -297,7 +292,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanoSaude.setVisible(false);
-        panelPaciente.setVisible(true);
     }//GEN-LAST:event_buttonPacienteActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
@@ -311,7 +305,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanoSaude.setVisible(false);
-        panelPaciente.setVisible(false);
     }//GEN-LAST:event_buttonMedicosActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
@@ -353,11 +346,6 @@ public class HomeFrame extends javax.swing.JFrame {
         panelPlanoSaude.setBounds(DIMENSION_X, DIMENSION_Y, WIDTH, HEIGHT);
         panelPlanoSaude.setVisible(false);
         panelMain.add(panelPlanoSaude);
-        
-        panelPaciente = new PacientePanel();
-        panelPaciente.setBounds(DIMENSION_X, DIMENSION_Y, WIDTH, HEIGHT);
-        panelPaciente.setVisible(false);
-        panelMain.add(panelPaciente);
         
     }
 }
