@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -87,7 +88,7 @@ public class MedicoDAO {
 
                 //Transformar os dados da linha em uma especialidade
                 String[] vetor = linha.split(";");
-                Medico e = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3]);
+                Medico e = new Medico(Integer.valueOf(vetor[0]), vetor[1], vetor[2], vetor[3], vetor[4], vetor[5]);
 
                 //Guardar a especialidade em uma lista
                 medicos.add(e);
@@ -105,10 +106,10 @@ public class MedicoDAO {
 
     }
     
-    public static DefaultTableModel getPlanoSaudeModel(){
+    public static DefaultTableModel getMedicoModel(){
         
         String[] titulos = {"CÓDIGO", "CRM", "NOME", "TELEFONE"};
-        String[][] dados = new String[medicos.size()][5];
+        String[][] dados = new String[medicos.size()][4];
         
         int i = 0;
         for (Medico e : medicos) {

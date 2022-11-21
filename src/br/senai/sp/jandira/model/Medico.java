@@ -10,12 +10,14 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(Integer codigo, String crm, String nome, String telefone) {
+    public Medico(Integer codigo, String crm, String nome, String telefone, String email, String dataNascimento, Especialidade[] especialidades) {
 
         this.codigo = codigo;
         this.crm = crm;
         this.nome = nome;
         this.telefone = telefone;
+        this.email = email;
+        this.dataFormatada = dataNascimento;
         this.contador = codigo;
 
     }
@@ -64,6 +66,10 @@ public class Medico {
     public int getContador() {
         return contador;
     }
+    
+    public void setDataFormatada(String data) {
+        this.dataFormatada = data;
+    }
 
     public String getNome() {
         return nome;
@@ -104,24 +110,20 @@ public class Medico {
     public void setCrm(String crm) {
         this.crm = crm;
     }
+    
+    public String toString(){
+        return ";" + Integer.toString(codigo);
+    }
 
     public String getSerializacao() {
-
-        StringBuffer separarCodigo = new StringBuffer();
-
-        for (Especialidade e : this.especialidades) {
-            separarCodigo.append(e.getCodigo());
-            separarCodigo.append(";");
-        }
-        String especialidadesSeparadas = separarCodigo.toString();
 
         return this.codigo + ";"
                 + this.crm + ";"
                 + this.nome + ";"
                 + this.telefone + ";"
                 + this.email + ";"
-                + this.dataFormatada + ";"
-                + especialidadesSeparadas;
+                + this.dataFormatada + ";" 
+                + this.especialidades;
     }
 
 }

@@ -80,6 +80,7 @@ public class PlanoSaudeDialog extends javax.swing.JDialog {
         fTextFieldValidade = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         panelHeader.setBackground(new java.awt.Color(102, 204, 255));

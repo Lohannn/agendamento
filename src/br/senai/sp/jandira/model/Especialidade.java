@@ -39,6 +39,10 @@ public class Especialidade {
 
     // Métodos de acesso aos atributos
 
+    public String toString(){
+        return nome;
+    }
+    
     public Integer getCodigo() {
         return codigo;
     }
