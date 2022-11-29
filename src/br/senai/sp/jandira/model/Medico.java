@@ -10,7 +10,7 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(Integer codigo, String crm, String nome, String telefone, String email, String dataNascimento, Especialidade[] especialidades) {
+    public Medico(Integer codigo, String crm, String nome, String telefone, String email, String dataNascimento, ArrayList<Especialidade> especialidades) {
 
         this.codigo = codigo;
         this.crm = crm;
@@ -22,7 +22,7 @@ public class Medico {
 
     }
 
-    public Medico(String crm, String nome, String telefone, String email, LocalDate dataNascimento, Especialidade[] especialidades) {
+    public Medico(String crm, String nome, String telefone, String email, LocalDate dataNascimento, ArrayList<Especialidade> especialidades) {
 
         formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         dataFormatada = dataNascimento.format(formatador);
@@ -51,7 +51,7 @@ public class Medico {
     private LocalDate dataNascimento;
     private DateTimeFormatter formatador;
     private String dataFormatada;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private static int contador = 100;
 
     public void gerarCodigo() {
@@ -66,7 +66,7 @@ public class Medico {
     public int getContador() {
         return contador;
     }
-    
+
     public void setDataFormatada(String data) {
         this.dataFormatada = data;
     }
@@ -79,11 +79,11 @@ public class Medico {
         this.nome = nome;
     }
 
-    public Especialidade[] getEspecialidade() {
+    public ArrayList<Especialidade> getEspecialidade() {
         return especialidades;
     }
 
-    public void setEspecialidade(Especialidade[] especialidades) {
+    public void setEspecialidade(ArrayList<Especialidade> especialidades) {
         this.especialidades = especialidades;
     }
 
@@ -110,9 +110,14 @@ public class Medico {
     public void setCrm(String crm) {
         this.crm = crm;
     }
-    
-    public String toString(){
-        return ";" + Integer.toString(codigo);
+
+    public String arrayParaString(ArrayList<Especialidade> array) {
+        ArrayList<String> codigos = new ArrayList<String>();
+        for(Especialidade e : array){
+            codigos.add(e.getCodigo().toString());
+        }
+        
+        return String.join(";", codigos);
     }
 
     public String getSerializacao() {
@@ -122,8 +127,8 @@ public class Medico {
                 + this.nome + ";"
                 + this.telefone + ";"
                 + this.email + ";"
-                + this.dataFormatada + ";" 
-                + this.especialidades;
+                + this.dataFormatada + ";"
+                + arrayParaString(this.especialidades);
     }
 
 }

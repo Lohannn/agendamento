@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/MedicoPanel.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/PlanoSaudeDialog.java</file>
+            <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/EspecialidadeDialog.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/model/Medico.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/PlanoSaudePanel.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/HomeFrame.java</file>
@@ -12,6 +13,7 @@
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/gui/MedicoDialog.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/model/Especialidade.java</file>
             <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/dao/MedicoDAO.java</file>
+            <file>file:/C:/Users/22282201/eclipse-workspace/sistema-agendamento/src/br/senai/sp/jandira/testes/TesteObjetos.java</file>
         </group>
     </open-files>
 </project-private>
