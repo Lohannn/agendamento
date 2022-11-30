@@ -18,6 +18,7 @@ public class Medico {
         this.telefone = telefone;
         this.email = email;
         this.dataFormatada = dataNascimento;
+        this.especialidades = especialidades;
         this.contador = codigo;
 
     }
